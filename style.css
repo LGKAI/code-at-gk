@@ -1,0 +1,221 @@
+/* Màu sắc chủ đạo (Tone Hồng) */
+:root {
+    --pink-light: #fff0f5; /* Hồng phấn làm nền */
+    --pink-main: #ffb6c1; /* Hồng nhạt */
+    --pink-dark: #ff69b4; /* Hồng đậm cho điểm nhấn */
+    --text-color: #552b36;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--pink-light);
+    color: var(--text-color);
+    position: relative;
+    overflow-x: hidden;
+    
+    /* Code đã được mở khóa để hiện ảnh nền */
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Lớp phủ mờ để dễ đọc chữ nếu bạn dùng ảnh nền rối */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 240, 245, 0.85); /* Tone hồng mờ trong suốt */
+    z-index: -1;
+}
+
+/* Hiệu ứng trái tim bay */
+#hearts-container {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none; /* Không cản trở khi bấm vào web */
+    z-index: 0;
+}
+
+.heart-bubble {
+    position: absolute;
+    bottom: -20px;
+    font-size: 24px;
+    animation: floatUp linear forwards;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+/* Thiết kế Thanh điều hướng & Tiêu đề */
+header {
+    text-align: center;
+    padding: 15px 20px; /* GIẢM TỪ 40px XUỐNG 15px Ở ĐÂY */
+    background: linear-gradient(135deg, var(--pink-main), var(--pink-dark));
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+}
+
+/* Giảm kích thước và khoảng cách chữ để gọn gàng hơn */
+header h1 { 
+    font-size: 1.8em; /* Giảm cỡ chữ xuống một chút */
+    margin-bottom: 5px; /* Giảm khoảng cách bên dưới */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); 
+}
+
+header h2 { 
+    font-weight: 300; 
+    font-size: 1.2em; 
+    margin-bottom: 10px; /* Giảm khoảng cách với thanh menu */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1em; /* Cỡ chữ menu nhỏ lại một xíu */
+    transition: 0.3s;
+}
+
+nav a:hover { color: #ffe4e1; text-decoration: underline; }
+
+header h1 { font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+header h2 { font-weight: 300; font-size: 1.5em; margin-bottom: 20px; }
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: 0.3s;
+}
+
+nav a:hover { color: #ffe4e1; text-decoration: underline; }
+
+/* Các hộp nội dung (Cards) */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 15px rgba(255, 182, 193, 0.4);
+    border: 2px solid var(--pink-main);
+}
+
+.card h2 {
+    color: var(--pink-dark);
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px dashed var(--pink-main);
+    padding-bottom: 10px;
+}
+
+/* Bố cục phần Lịch sử */
+.content-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.content-row img {
+    width: 50%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.content-row .text { width: 50%; font-size: 1.1em; line-height: 1.6; }
+.content-row p { margin-bottom: 10px; }
+
+/* Bố cục dạng lưới cho Địa điểm và Món ăn */
+.gallery {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.gallery-item {
+    text-align: center;
+    width: 45%;
+    background: var(--pink-light);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.gallery-item img {
+    width: 100%;             /* Chiều rộng bằng với khung chứa */
+    aspect-ratio: 1 / 1;     /* TẠO TỶ LỆ 1:1 (HÌNH VUÔNG) Ở ĐÂY */
+    object-fit: cover;       /* Giúp ảnh không bị méo, tự động cắt gọt phần thừa */
+    border-radius: 10px;     /* Bo tròn các góc ảnh */
+    margin-bottom: 10px;
+    border: 3px solid white; /* Viền trắng xung quanh ảnh */
+}
+
+/* Bài Quiz */
+.question { margin-bottom: 15px; font-size: 1.1em; }
+.question p { font-weight: bold; margin-bottom: 5px; color: var(--pink-dark); }
+.question label { margin-right: 15px; cursor: pointer; }
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--pink-dark);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn:hover { background-color: #ff1493; }
+
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 8px;
+    display: none; /* Ẩn đi khi chưa có kết quả */
+}
+
+/* Các class dùng để ẩn/hiện mục bằng JavaScript */
+.hidden-section {
+    display: none !important;
+}
+
+.active-section {
+    display: block;
+    animation: fadeIn 0.6s ease-in-out; /* Hiệu ứng hiện ra từ từ */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
